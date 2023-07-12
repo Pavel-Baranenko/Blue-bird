@@ -1,0 +1,67 @@
+html,
+body {
+   height: 100%;
+
+   * {
+      box-sizing: border-box;
+   }
+}
+
+a {
+   color: inherit;
+}
+
+body {
+   color: #333;
+   font-family: Lora;
+   font-size: 16px;
+   font-style: normal;
+   font-weight: 400;
+   line-height: 150%;
+   overflow-x: hidden;
+   background-color: #57B2DF;
+}
+
+button {
+   cursor: pointer;
+}
+
+.wrapper {
+   display: flex;
+   flex-direction: column;
+   min-height: 100%;
+}
+
+.main {
+   flex: 1 0 auto;
+}
+
+.footer {
+   flex: 0 0 auto;
+}
+
+.container {
+   max-width: 1680px;
+   margin: 0 auto;
+   padding: 0 16px;
+}
+
+.container-content {
+   max-width: 1270px;
+   margin: 0 auto;
+   padding: 0 15px;
+}
+
+.container-fluid {
+   max-width: 1145px;
+   padding: 0 15px;
+   margin: 0 auto;
+}
+
+a {
+   cursor: pointer;
+}
+
+button {
+   cursor: pointer;
+}

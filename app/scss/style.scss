@@ -1757,3 +1757,18 @@ font-family: 'Roboto', sans-serif;
       height: 268px;
    }
 }
+
+.wrapper {
+   overflow: hidden;
+}
+
+@media (max-width: 768px) {
+   .container {
+      max-width: 343px;
+   }
+
+   .header__mob {
+      padding-left: 0;
+      padding-right: 0;
+   }
+}

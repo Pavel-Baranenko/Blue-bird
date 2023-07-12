@@ -1,12 +1,12 @@
 var delay_popup = 5000;
 setTimeout("document.getElementById('overlay').style.display='block'", delay_popup);
 
-window.onload = function () {
-   $('html, body').animate({
-      scrollTop: $('#fixed').offset().top
-   }, 5000
-   );
-}
+// window.onload = function () {
+//    $('html, body').animate({
+//       scrollTop: $('#fixed').offset().top
+//    }, 5000
+//    );
+// }
 
 
 function links() {

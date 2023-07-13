@@ -1,26 +1,43 @@
-var delay_popup = 5000;
-setTimeout("document.getElementById('overlay').style.display='block'", delay_popup);
+// var delay_popup = 5000;
+// setTimeout("document.getElementById('overlay').style.display='block'", delay_popup);
 
-// window.onload = function () {
-//    $('html, body').animate({
-//       scrollTop: $('#fixed').offset().top
-//    }, 5000
-//    );
+
+// function links() {
+//    var links = document.querySelector('.hero__links')
+//    links.classList.add("active");
 // }
 
+// setTimeout(links, 5000);
 
-function links() {
-   var links = document.querySelector('.hero__links')
-   links.classList.add("active");
-}
 
-setTimeout(links, 5000);
+var element = document.getElementById('overlay');
+
+const link = document.querySelector('.hero__links');
+const music = document.querySelector('.music');
+
+window.addEventListener('scroll', function () {
+   if (window.scrollY > 500) {
+      element.classList.add("shadow");
+      music.classList.add("shadow");
+      link.classList.add("active");
+   } else {
+      element.classList.remove("shadow");
+      music.classList.remove("shadow");
+      link.classList.remove("active");
+   }
+});
+
+
+
+
+
 
 const menuBtn = document.querySelector(".menu__btn");
 const menu = document.querySelector(".menu__list");
 
 menuBtn.addEventListener("click", () => {
    menu.classList.toggle("menu__list--active");
+   document.querySelector("body").classList.toggle('no__scroll');
 });
 
 document.querySelector('.menu__btn')
@@ -38,14 +55,50 @@ $(document).mouseup(function (e) {
 });
 
 
+const read = document.querySelector(".read");
+
+
+read.addEventListener("click", () => {
+   document.querySelector(".book__text").classList.toggle('watch');
+});
+
+
 var swiper1 = new Swiper(".swiper", {
    speed: 500,
    loop: true,
-   slidesPerView: "1",
+   slidesPerView: 1.09,
    centeredSlides: true,
+   spaceBetween: 8,
    navigation: {
       nextEl: ".swiper-button-next",
       prevEl: ".swiper-button-prev",
+   },
+});
+var aboutSwiper = new Swiper(".about__swiper", {
+   loop: true,
+   navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+   },
+   breakpoints: {
+      // when window width is >= 320px
+      320: {
+         slidesPerView: 1,
+         centeredSlides: true,
+         spaceBetween: 120,
+      },
+      // when window width is >= 375px
+      // when window width is >= 640px
+      768: {
+         slidesPerView: 2,
+         spaceBetween: 151,
+         centeredSlides: false,
+      },
+      1920: {
+         slidesPerView: 3,
+         spaceBetween: 116,
+         centeredSlides: true,
+      }
    },
 });
 var swiperCards = new Swiper(".postcards__swiper", {
@@ -60,12 +113,21 @@ var swiperCards = new Swiper(".postcards__swiper", {
 
 
 var popupSwiper = new Swiper(".popup__swiper", {
-   loop: "true",
-   slidesPerView: "1",
+   loop: true,
+   slidesPerView: 1,
    centeredSlides: true,
    navigation: {
       nextEl: ".swiper-button-next",
       prevEl: ".swiper-button-prev",
+   },
+   breakpoints: {
+      320: {
+         spaceBetween: 120,
+      },
+      768: {
+
+         spaceBetween: 0,
+      },
    },
 });
 
@@ -139,29 +201,28 @@ var book__gallery = new Swiper(".book__gallery", {
    },
 });
 
+/*---PopUp--------------------------*/
+var modal = document.querySelector(".modal");
+var trigger = document.querySelectorAll(".trigger");
+var closeButton = document.querySelectorAll(".close-button");
 
-const popup = document.querySelectorAll(".postcards-swiper-wrapper");
-const popupOpen = document.querySelector(".postcards__popup");
+function toggleModal() {
+   modal.classList.toggle("show-modal");
+}
 
+function windowOnClick(event) {
+   if (event.target === modal) {
+      toggleModal();
+   }
+}
 
-popup.addEventListener('click', () => {
-   popupOpen.classList.add('is-open');
+// trigger.addEventListener("click", toggleModal);
+
+trigger.forEach(function (item) {
+   item.addEventListener('click', toggleModal);
 });
-
-
-
-const closePopup = document.querySelector(".popup__close");
-
-closePopup.addEventListener('click', () => {
-   console.log('test');
-   popupOpen.classList.remove('is-open');
+closeButton.forEach(function (item) {
+   item.addEventListener('click', toggleModal);
 });
+window.addEventListener("click", windowOnClick);
 
-
-const popupMob = document.querySelector(".postcards__mob-box");
-
-
-popupMob.addEventListener('click', () => {
-   console.log("test");
-   popupOpen.classList.add('is-open');
-});

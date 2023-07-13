@@ -1,79 +1,3 @@
-// var delay_popup = 5000;
-// setTimeout("document.getElementById('overlay').style.display='block'", delay_popup);
-
-
-// function links() {
-//    var links = document.querySelector('.hero__links')
-//    links.classList.add("active");
-// }
-
-// setTimeout(links, 5000);
-
-
-var element = document.getElementById('overlay');
-
-const link = document.querySelector('.hero__links');
-const music = document.querySelector('.music');
-
-window.addEventListener('scroll', function () {
-   if (window.scrollY > 500) {
-      element.classList.add("shadow");
-      music.classList.add("shadow");
-      link.classList.add("active");
-   } else {
-      element.classList.remove("shadow");
-      music.classList.remove("shadow");
-      link.classList.remove("active");
-   }
-});
-
-
-
-
-
-
-const menuBtn = document.querySelector(".menu__btn");
-const menu = document.querySelector(".menu__list");
-
-menuBtn.addEventListener("click", () => {
-   menu.classList.toggle("menu__list--active");
-   document.querySelector("body").classList.toggle('no__scroll');
-});
-
-document.querySelector('.menu__btn')
-   .onclick = function () {
-      if (this.classList.contains('checked')) {
-         this.classList.remove('checked')
-      }
-      else { this.classList.add('checked') }
-   }
-$(document).mouseup(function (e) {
-   var container = $('.menu__btn.checked');
-   if (container.has(e.target).length === 0) {
-      container.removeClass('checked');
-   }
-});
-
-
-const read = document.querySelector(".read");
-
-
-read.addEventListener("click", () => {
-   document.querySelector(".book__text").classList.toggle('watch');
-});
-
-
-var swiper1 = new Swiper(".swiper", {
-   speed: 500,
-   loop: true,
-   slidesPerView: 1.09,
-   centeredSlides: true,
-   spaceBetween: 8,
-   navigation: {
-      nextEl: ".swiper-button-next",
-      prevEl: ".swiper-button-prev",
-   },
-});
 var aboutSwiper = new Swiper(".about__swiper", {
    loop: true,
    navigation: {
@@ -101,6 +25,19 @@ var aboutSwiper = new Swiper(".about__swiper", {
       }
    },
 });
+
+var swiper1 = new Swiper(".swiper", {
+   speed: 500,
+   loop: true,
+   slidesPerView: 1.09,
+   centeredSlides: true,
+   spaceBetween: 8,
+   navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+   },
+});
+
 var swiperCards = new Swiper(".postcards__swiper", {
    loop: true,
    slidesPerView: "4",
@@ -122,7 +59,7 @@ var popupSwiper = new Swiper(".popup__swiper", {
    },
    breakpoints: {
       320: {
-         spaceBetween: 120,
+         spaceBetween: 0,
       },
       768: {
 
@@ -145,29 +82,6 @@ var swiperNew = new Swiper(".swiper-art", {
       type: "fraction",
    },
 });
-
-
-
-const tabsBtn = document.querySelectorAll(".tab-btn");
-const tabItems = document.querySelectorAll(".tab__item");
-
-tabsBtn.forEach(function (item) {
-   item.addEventListener('click', function () {
-      let currentBtn = item;
-      let tabId = currentBtn.getAttribute('data-tab');
-      let currentTab = document.querySelector(tabId);
-
-      tabsBtn.forEach(function (item) {
-         item.classList.remove('active');
-      });
-      tabItems.forEach(function (item) {
-         item.classList.remove('active');
-      });
-      currentBtn.classList.add('active');
-      currentTab.classList.add('active');
-   })
-});
-
 
 var book__gallery = new Swiper(".book__gallery", {
    direction: 'horizontal',
@@ -201,10 +115,13 @@ var book__gallery = new Swiper(".book__gallery", {
    },
 });
 
-/*---PopUp--------------------------*/
+
 var modal = document.querySelector(".modal");
 var trigger = document.querySelectorAll(".trigger");
 var closeButton = document.querySelectorAll(".close-button");
+
+var modalVert = document.querySelector(".modal-vert");
+var triggerVert = document.querySelectorAll(".trigger-vert");
 
 function toggleModal() {
    modal.classList.toggle("show-modal");
@@ -216,8 +133,6 @@ function windowOnClick(event) {
    }
 }
 
-// trigger.addEventListener("click", toggleModal);
-
 trigger.forEach(function (item) {
    item.addEventListener('click', toggleModal);
 });
@@ -225,4 +140,69 @@ closeButton.forEach(function (item) {
    item.addEventListener('click', toggleModal);
 });
 window.addEventListener("click", windowOnClick);
+
+
+
+
+
+var element = document.getElementById('overlay');
+
+const link = document.querySelector('.hero__links');
+const music = document.querySelector('.music');
+
+window.addEventListener('scroll', function () {
+   if (window.scrollY > 500) {
+      element.classList.add("shadow");
+      music.classList.add("shadow");
+      link.classList.add("active");
+   } else {
+      element.classList.remove("shadow");
+      music.classList.remove("shadow");
+      link.classList.remove("active");
+   }
+});
+
+
+
+const menuBtn = document.querySelector(".menu__btn");
+const menu = document.querySelector(".menu__list");
+
+menuBtn.addEventListener("click", () => {
+   menu.classList.toggle("menu__list--active");
+   menuBtn.classList.toggle("checked");
+   document.querySelector("body").classList.toggle('no__scroll');
+});
+
+
+const read = document.querySelector(".read");
+
+
+read.addEventListener("click", () => {
+   document.querySelector(".book__text").classList.toggle('watch');
+});
+
+const tabsBtn = document.querySelectorAll(".tab-btn");
+const tabItems = document.querySelectorAll(".tab__item");
+
+tabsBtn.forEach(function (item) {
+   item.addEventListener('click', function () {
+      let currentBtn = item;
+      let tabId = currentBtn.getAttribute('data-tab');
+      let currentTab = document.querySelector(tabId);
+
+      tabsBtn.forEach(function (item) {
+         item.classList.remove('active');
+      });
+      tabItems.forEach(function (item) {
+         item.classList.remove('active');
+      });
+      currentBtn.classList.add('active');
+      currentTab.classList.add('active');
+   })
+});
+
+
+
+/*---PopUp--------------------------*/
+
 
